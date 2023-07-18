@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  redis:
+    image: redis/redis-stack-server:latest
+    volumes:
+      - ./redis/data:/data
+#      - ./redis/redis.conf:/redis-stack.conf
+    ports:
+      - "${REDIS_STACK_SERVER_PORT}:6379"
+    environment:
+      - REDIS_ARGS=--requirepass ${REDIS_PASSWORD}
